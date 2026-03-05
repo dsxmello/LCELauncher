@@ -16,7 +16,7 @@ $PrefsFile = Join-Path $Destino "launcher_prefs.txt"
 
 # --- Interface Setup ---
 $Form = New-Object System.Windows.Forms.Form
-$Form.Text = "LCE (Legacy Console Edition) Launcher"
+$Form.Text = "LCE Launcher"
 $Form.Size = New-Object System.Drawing.Size(400, 360)
 $Form.StartPosition = "CenterScreen"
 $Form.FormBorderStyle = "FixedDialog"
@@ -24,7 +24,7 @@ $Form.MaximizeBox = $false
 $Form.BackColor = [System.Drawing.Color]::White
 $Form.Font = New-Object System.Drawing.Font("Segoe UI", 10)
 
-# 1. Username Section (Moved to Top)
+# 1. Username Section
 $LblUser = New-Object System.Windows.Forms.Label
 $LblUser.Text = "In-Game Username:"
 $LblUser.Location = New-Object System.Drawing.Point(30, 20)
@@ -66,7 +66,7 @@ $ChkServer.Location = New-Object System.Drawing.Point(30, 140)
 $ChkServer.Size = New-Object System.Drawing.Size(320, 25)
 $Form.Controls.Add($ChkServer)
 
-# 4. Update Button (Moved Below Server Mode)
+# 4. Update Button
 $BtnUpdate = New-Object System.Windows.Forms.Button
 $BtnUpdate.Text = "Check for Updates"
 $BtnUpdate.Location = New-Object System.Drawing.Point(30, 175)
@@ -74,21 +74,22 @@ $BtnUpdate.Size = New-Object System.Drawing.Size(320, 40)
 $BtnUpdate.FlatStyle = "Flat"
 $Form.Controls.Add($BtnUpdate)
 
-# 5. Status and Launch Section
-$Status = New-Object System.Windows.Forms.Label
-$Status.Text = "Ready."
-$Status.Location = New-Object System.Drawing.Point(30, 225)
-$Status.Size = New-Object System.Drawing.Size(320, 20)
-$Status.TextAlign = "MiddleCenter"
-$Form.Controls.Add($Status)
-
+# 5. Launch Section (Moved Up)
 $BtnLaunch = New-Object System.Windows.Forms.Button
 $BtnLaunch.Text = "Launch LCE"
-$BtnLaunch.Location = New-Object System.Drawing.Point(30, 255)
+$BtnLaunch.Location = New-Object System.Drawing.Point(30, 225)
 $BtnLaunch.Size = New-Object System.Drawing.Size(320, 45)
 $BtnLaunch.FlatStyle = "Flat"
 $BtnLaunch.BackColor = [System.Drawing.Color]::LightGray
 $Form.Controls.Add($BtnLaunch)
+
+# 6. Status Label (Moved to Bottom)
+$Status = New-Object System.Windows.Forms.Label
+$Status.Text = "Ready."
+$Status.Location = New-Object System.Drawing.Point(30, 280)
+$Status.Size = New-Object System.Drawing.Size(320, 20)
+$Status.TextAlign = "MiddleCenter"
+$Form.Controls.Add($Status)
 
 # --- Logic block for Checking Updates ---
 $Script:CheckAndUpdate = {
